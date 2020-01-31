@@ -1,0 +1,219 @@
+body,
+html {
+	margin: 0;
+	border: 0;
+	outline: none;
+}
+
+body {
+	background: #e9ebee;
+	line-height: 1;
+	font-family: Open Sans, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.content {
+	background: white;
+	border-radius: 5px;
+	padding: 20px;
+}
+
+.search-container h4 {
+	margin: 0px;
+	font-size: 24px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	color: dimgrey;
+}
+
+.search-container .form {
+	display: flex;
+	align-items: center;
+}
+
+.search-container .form input {
+	border-radius: 5px;
+	border: none;
+	background: #e4e4e4;
+	padding: 10px;
+	width: 100%;
+	margin-right: 10px;
+}
+
+.search-container .form button {
+	background: transparent;
+	border-radius: 5px;
+	padding: 10px;
+	color: dimgrey;
+	border-color: dimgrey;
+	cursor: pointer;
+}
+
+.history {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top: 1px solid #eee;
+}
+
+.history h6 {
+	font-size: 16px;
+	margin: 0px;
+	margin-bottom: 10px;
+	color: #666;
+}
+
+.repository-item {
+	display: flex;
+	align-items: center;
+	padding: 0px 10px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.repository-item img {
+	border-radius: 50%;
+	margin-right: 10px;
+	width: 50px;
+}
+
+.repository-item .repository-name {
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.repository-item .repository-name span {
+	font-weight: bold;
+}
+
+.repository-item .repository-name i {
+	color: #666;
+}
+
+.table-loading {
+	padding: 20px;
+	text-align: center;
+}
+
+.table-loading i {
+	font-size: 30px;
+}
+
+.back {
+	display: flex;
+	align-items: center;
+}
+
+.back button {
+	background: transparent;
+	border-radius: 5px;
+	padding: 10px;
+	color: dimgrey;
+	border-color: dimgrey;
+	margin-right: 50px;
+	cursor: pointer;
+}
+
+.back button i {
+	margin-right: 15px;
+}
+
+.back h4 {
+	margin: 0px;
+	font-size: 24px;
+	font-weight: bold;
+	color: dimgrey;
+}
+
+.user-detail {
+	margin-top: 40px;
+}
+
+.user-detail .profile {
+	text-align: center;
+}
+
+.user-detail .profile img {
+	width: 120px;
+	border-radius: 50%;
+}
+
+.user-detail .profile h6 {
+	margin: 0px;
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.user-repositories {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	font-weight: bold;
+	font-size: 20px;
+	border-bottom: 1px solid #eee;
+}
+
+.user-repositories i {
+	margin-right: 5px;
+}
+
+.summary {
+	margin-bottom: 20px;
+	background: #f4f4f4;
+	padding: 20px;
+	border-radius: 5px;
+	text-align: left;
+}
+
+.summary b {
+	font-size: 14px;
+}
+
+.summary h6 {
+	margin: 0px;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+
+.summary div {
+	margin-bottom: 5px;
+}
+
+.repository {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.repository .title {
+	font-weight: bold;
+	margin-bottom: 5px;
+	font-size: 16px;
+}
+
+.repository ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.repository ul li {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.repository ul li b {
+	font-size: 14px;
+}
