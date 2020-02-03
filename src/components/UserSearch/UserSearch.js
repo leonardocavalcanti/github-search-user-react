@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useActions, useStore } from "../../store";
 import * as userService from "../../services/UserService";
 import * as searchHistoryService from "../../services/SearchHistoryService";
@@ -6,11 +6,14 @@ import User from "../User";
 import UserSearchItem from "../UserSearchItem";
 
 export default function UserSearch() {
-	const { state } = useStore();
-	const { usersActions } = useActions();
+	const inputRef = useRef();
+
 	const [query, setQuery] = useState();
-	const [search, setSearch] = useState();
 	const [loading, setLoading] = useState(false);
+
+	const { usersActions } = useActions();
+	const { state } = useStore();
+
 	const searchHistory = searchHistoryService.get();
 
 	useEffect(() => {
@@ -26,7 +29,8 @@ export default function UserSearch() {
 	}, [query, usersActions]);
 
 	function submitSearch() {
-		setQuery(search);
+		const input = inputRef.current;
+		setQuery(input.value);
 	}
 
 	function selectUser(user) {
@@ -41,10 +45,6 @@ export default function UserSearch() {
 	function selectUserFromHistory(user) {
 		usersActions.select(user);
 	}
-
-	const handleSearchChange = e => {
-		setSearch(e.target.value);
-	};
 
 	return (
 		<div className="container">
@@ -61,10 +61,9 @@ export default function UserSearch() {
 						<div className="search-container">
 							<h4>Busca de Usuários do GitHub</h4>
 							<div className="form">
-								<input onChange={handleSearchChange} />
+								<input type="text" ref={inputRef} />
 								<button
 									onClick={submitSearch}
-									disabled={!search || search.length === 0}
 								>
 									Buscar
 							</button>
@@ -78,7 +77,7 @@ export default function UserSearch() {
 							<UserSearchItem selectUser={selectUser} item={item} key={i} />
 						))
 					) : (
-							<User />
+							<User user={state.users.item} />
 						)
 				) : (
 						<div className="table-loading">

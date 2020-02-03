@@ -3,7 +3,8 @@ import { useActions, useStore } from "../../store";
 import * as repositoryService from "../../services/RepositoryService";
 import * as searchHistoryService from "../../services/SearchHistoryService";
 
-export default function User() {
+export default function User(props) {
+	const { user } = props;
 	const { state } = useStore();
 	const { usersActions, repositoriesActions } = useActions();
 
@@ -13,19 +14,19 @@ export default function User() {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		if (state.users.item) {
-			if (state.users.item.isFromHistory) {
-				repositoriesActions.set(state.users.item.repositories);
+		if (user) {
+			if (user.isFromHistory) {
+				repositoriesActions.set(user.repositories);
 
-				setTotals(state.users.item.repositories);
+				setTotals(user.repositories);
 			} else {
 				setLoading(true);
 
-				repositoryService.get(state.users.item.login).then(r => {
+				repositoryService.get(user.login).then(r => {
 					repositoriesActions.set(r.data);
 
 					searchHistoryService.put({
-						...state.users.item,
+						...user,
 						repositories: r.data,
 						isFromHistory: true
 					});
@@ -36,7 +37,7 @@ export default function User() {
 				});
 			}
 		}
-	}, [state.users.item, usersActions]);
+	}, [user, usersActions, repositoriesActions]);
 
 	function setTotals(items) {
 		let size = 0;
@@ -64,22 +65,22 @@ export default function User() {
 	}
 
 	return (
-		<div className="user-detail" key={state.users.item.login}>
+		<div className="user-detail" key={user.login}>
 			<div className="profile">
-				<img src={state.users.item.avatar_url} />
-				<h6>{state.users.item.login}</h6>
+				<img src={user.avatar_url} alt={user.login} />
+				<h6>{user.login}</h6>
 				<div className="summary">
 					<div>
 						<small>Nome</small>{" "}
-						<b>{state.users.item.name}</b>
+						<b>{user.name}</b>
 					</div>
 					<div>
 						<small>Bio</small>{" "}
-						<b>{state.users.item.bio}</b>
+						<b>{user.bio}</b>
 					</div>
 					<div>
 						<small>Localidade</small>{" "}
-						<b>{state.users.item.location}</b>
+						<b>{user.location}</b>
 					</div>
 				</div>
 			</div>
@@ -96,8 +97,8 @@ export default function User() {
 						</div>
 						<div>
 							<small>Linguagens</small>{" "}
-							{languages.map(language => (
-								<b>
+							{languages.map((language, i) => (
+								<b key={i}>
 									{language.name} ({language.count}){" "}
 								</b>
 							))}
