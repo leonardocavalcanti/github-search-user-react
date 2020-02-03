@@ -4,6 +4,9 @@ Esta é uma simples aplicação, utilizando alguns dos últimos recursos do Reac
 ### `Hooks e Context`
 Foram utilizados para controlar a atualização do componente (useEffect, useState), alteração de inputs (useRef) e contexto (useContext).
 
+### `Consultas Offline`
+O registro do service worker foi ativado, para que aplicação possa ser executada offline. Os dados dos últimos usuários visualizados estão sendo armezenados no localStorage.
+
 ## Execução local
 
 ### `yarn install`
